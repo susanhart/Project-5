@@ -1,4 +1,4 @@
-//let employees = [];
+let employees = [];
 
 // //Gallery Mark-Up: Getting and displaying 12 Random Users
 
@@ -8,11 +8,14 @@
  $('.search-container').append($form);
 
  function renderInfo(data) { 
-     var imageLocation = data.results[0].picture.large;
-     var name = data.results[0].name.first + " " + data.results[0].name.last;
-     console.log(name);
-     var location = data.results[0].location.city + ", " + data.results[0].location.state
-     var email = data.results[0].email
+  for (i = 0; i < 12; i++) { 
+    //   loadAndShowData();
+     var imageLocation = data.results[i].picture.large; 
+     console.log ("Hello")
+     var name = data.results[i].name.first + " " + data.results[i].name.last;
+     //console.log(name);
+     var location = data.results[i].location.city + ", " + data.results[i].location.state
+     var email = data.results[i].email
      $card = $("<div class='card'></div>")
      $('.gallery').append($card);
 
@@ -35,30 +38,30 @@
      $location = $('<p class="card-text cap">city, state</p>')
      $location.html(location)
      $cardInfoContainer.append($location)
-        
+  }        
  }
 
- function loadAndShowData() { 
+ //function loadAndShowData() { 
  $.ajax({
      url: 'https://randomuser.me/api/',
      dataType: 'json',
      success: function(data) {
-       console.log(data.results[0].name);
+      /*  console.log(data.results[0].name);
        console.log(data.results[0].email);
-       console.log(data.results[0])
+       console.log(data.results[0]) */
        renderInfo(data)
       
      }
    });
- }
+ //}
 
- var i;
- for (i = 0; i < 12; i++) { 
-     loadAndShowData();
- }
+// for (i = 0; i < 12; i++) { 
+ //    loadAndShowData();
+ //}
 // //Creating the modal pop-up that brings out the modal and blocks the background
 
  function employeeModal(index) {
+      console.log("EM")
    var employee = employees[index];
    var name = data.results[0].name.first + " " + data.results[0].name.last;
    var dateOfBirth = formatDateOfBirth(employee.dob);
@@ -74,7 +77,9 @@
    modalContent += '</div>';
    $('#employee-modal').append(modalContent);
    $('.modal').css('display', 'block');
+   console.log(index)
    addEventListenerToModal(index);
+
  }
 
 // //puts a date into the DOB
@@ -100,6 +105,7 @@
 
 // //Adding the 'x', next, and back button in modal
  function addEventListenerToModal(idNumber) {
+  // console.log("Hello")
    $('.close').click(function() {
      $('.modal').css('display', 'none');
      $('.modal-content').remove();
