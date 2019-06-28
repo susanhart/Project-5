@@ -46,13 +46,15 @@ let employees = [];
 
  //function loadAndShowData() { 
  $.ajax({
-     url: 'https://randomuser.me/api/?results=12&nat=us,gb',
-     dataType: 'json',
+     url: 
+     'https://randomuser.me/api/?results=12&nat=us',
+
+    dataType: 'json',
      success: function(data) {
       /*  console.log(data.results[0].name);
        console.log(data.results[0].email);
        console.log(data.results[0]) */
-       renderInfo(data)
+       renderInfo(data);
       
      }
    });
@@ -68,17 +70,27 @@ let employees = [];
    var employee = data;
    var name = employee.name.first + " " + employee.name.last;
    var dateOfBirth = formatDateOfBirth(employee.dob.date);
-   var modalContent = '<div class="modal-content">';
-   var location = employee.location.city + ", " + employee.location.state
-   modalContent += '<span class="close">&times;</span>';
-   $cardImage = $("<img class='card-img' alt='profile picture'>");
-   modalContent += '<p><strong>' + name + '</strong><br>';
-   modalContent += '<br><hr><br>' + employee.cell + '<br><br>';
-   modalContent +=  location + '<br>';
-   modalContent += 'Birthday: ' + dateOfBirth + '</p>';
-   modalContent += '<button class="next">Next Employee</button></span>';   
-   modalContent += '</div>';
+   
+   var location = employee.location.city + ", " + employee.location.state + ", " + employee.location.postcode; 
+   var modalContent = '<button type="button id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
+  modalContent += "<img class='modal-img'  src='" + employee.picture.large + "'alt='profile picture'>";
+  modalContent += '<h3 id="name" class="modal-name cap">' + name + '</h3>';
+  modalContent += '<p class="modal-text">' + employee.email + '</p>';
+  modalContent +='<p class="modal-text cap">' + employee.location.city + '</p>';
+  modalContent += '<hr>';
+  modalContent += '<p class="modal-text">' + employee.phone + '</p>';
+  modalContent +='<p class="modal-text cap">' + employee.location.street + '</p>';
+  modalContent += '<p class="modal-text cap">' + location + '</p>';
+  modalContent += '<p class="modal-text"> Birthday: ' + dateOfBirth + '</p>';
 
+   modalContent += '</div>';
+   //modalContent +=
+   // '<p class="modal-text cap">' +
+   // employee.location.city +
+   // ', ' +
+   // employee.location.state + " "+
+   // employee.location.postcode +
+   // '</p>';
    $("body").append('<div class="modal-container"></div>');
    $(".modal-container").append('<div class="modal"></div>');
    $('.modal').append(modalContent);
@@ -112,7 +124,7 @@ let employees = [];
 // //Adding the 'x', next, and back button in modal
  function addEventListenerToModal(idNumber) {
   // console.log("Hello")
-   $('.close').click(function() {
+   $('.modal-close-btn').click(function() {
      $('.modal').css('display', 'none');
      $('.modal-content').remove();
    })
