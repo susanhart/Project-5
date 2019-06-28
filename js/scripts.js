@@ -61,24 +61,25 @@ let employees = [];
  //}
 // //Creating the modal pop-up that brings out the modal and blocks the background
 
- function employeeModal(index, data) {
-      console.log(data)
-   var employee = data.results[index];
-   var name = employee.name.first + " " + employee.name.last;
-   var dateOfBirth = formatDateOfBirth(employee.dob);
-   var modalContent = '<div class="modal-content">';
-   var location = employee.location.city + ", " + employee.location.state
-   modalContent += '<span class="close">&times;</span>';
-   $cardImage = $("<img class='card-img' alt='profile picture'>");
-   modalContent += '<p><strong>' + name.first + ' ' + name.last + '</strong><br>';
-   modalContent += '<br><hr><br>' + employee.cell + '<br><br>';
-   modalContent +=  location + '<br>';
-   modalContent += 'Birthday: ' + dateOfBirth + '</p>';
-   modalContent += '<button class="next">Next Employee</button></span>';   
-   modalContent += '</div>';
+//  function employeeModal(index, data) {
+//      console.log(data)
+//   var employee = data.results[index];
+//   var name = employee.name.first + " " + employee.name.last;
+//   var dateOfBirth = formatDateOfBirth(employee.dob);
+//   var modalContent = '<div class="modal-content">';
+//   var location = employee.location.city + ", " + employee.location.state
+//   modalContent += '<span class="close">&times;</span>';
+//   $cardImage = $("<img class='card-img' alt='profile picture'>");
+//   modalContent += '<p><strong>' + name.first + ' ' + name.last + '</strong><br>';
+//   modalContent += '<br><hr><br>' + employee.cell + '<br><br>';
+//   modalContent +=  location + '<br>';
+//   modalContent += 'Birthday: ' + dateOfBirth + '</p>';
+//   modalContent += '<button class="next">Next Employee</button></span>';   
+//   modalContent += '</div>';
 
-   $("body").append('<div class="modal-container"></div>');
-   $(".modal-container").append('<div class="modal"></div>');
+//   $("body").append('<div class="modal-container"></div>');
+   //$(".modal-container").append('<div class="modal"></div>');
+  
    $('.modal').css('display', 'block');
    console.log(index)
    addEventListenerToModal(index);
