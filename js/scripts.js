@@ -38,12 +38,13 @@ let employees = [];
      $location = $('<p class="card-text cap">city, state</p>')
      $location.html(location)
      $cardInfoContainer.append($location)
+     $card.click(employeeModal(i, data))
   }        
  }
 
  //function loadAndShowData() { 
  $.ajax({
-     url: 'https://randomuser.me/api/',
+     url: 'https://randomuser.me/api/?results=12',
      dataType: 'json',
      success: function(data) {
       /*  console.log(data.results[0].name);
@@ -60,18 +61,18 @@ let employees = [];
  //}
 // //Creating the modal pop-up that brings out the modal and blocks the background
 
- function employeeModal(index) {
-      console.log("EM")
-   var employee = employees[index];
-   var name = data.results[0].name.first + " " + data.results[0].name.last;
+ function employeeModal(index, data) {
+      console.log(data)
+   var employee = data.results[index];
+   var name = employee.name.first + " " + employee.name.last;
    var dateOfBirth = formatDateOfBirth(employee.dob);
    var modalContent = '<div class="modal-content">';
-   var location = data.results[0].location.city + ", " + data.results[0].location.state
+   var location = employee.location.city + ", " + employee.location.state
    modalContent += '<span class="close">&times;</span>';
    $cardImage = $("<img class='card-img' alt='profile picture'>");
    modalContent += '<p><strong>' + name.first + ' ' + name.last + '</strong><br>';
    modalContent += '<br><hr><br>' + employee.cell + '<br><br>';
-   modalContent +=  address + '<br>';
+   modalContent +=  location + '<br>';
    modalContent += 'Birthday: ' + dateOfBirth + '</p>';
    modalContent += '<button class="next">Next Employee</button></span>';   
    modalContent += '</div>';
