@@ -65,7 +65,7 @@ let employees = [];
 
   function employeeModal(index, data) {
       console.log(data)
-   var employee = data.results[index];
+   var employee = data;
    var name = employee.name.first + " " + employee.name.last;
    var dateOfBirth = formatDateOfBirth(employee.dob);
    var modalContent = '<div class="modal-content">';
