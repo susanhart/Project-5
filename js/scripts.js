@@ -67,12 +67,12 @@ let employees = [];
       console.log(data)
    var employee = data;
    var name = employee.name.first + " " + employee.name.last;
-   var dateOfBirth = formatDateOfBirth(employee.dob);
+   var dateOfBirth = formatDateOfBirth(employee.dob.date);
    var modalContent = '<div class="modal-content">';
    var location = employee.location.city + ", " + employee.location.state
    modalContent += '<span class="close">&times;</span>';
    $cardImage = $("<img class='card-img' alt='profile picture'>");
-   modalContent += '<p><strong>' + name.first + ' ' + name.last + '</strong><br>';
+   modalContent += '<p><strong>' + name + '</strong><br>';
    modalContent += '<br><hr><br>' + employee.cell + '<br><br>';
    modalContent +=  location + '<br>';
    modalContent += 'Birthday: ' + dateOfBirth + '</p>';
