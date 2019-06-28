@@ -76,7 +76,9 @@ let employees = [];
    modalContent += 'Birthday: ' + dateOfBirth + '</p>';
    modalContent += '<button class="next">Next Employee</button></span>';   
    modalContent += '</div>';
-   $('#employee-modal').append(modalContent);
+
+   $("body").append('<div class="modal-container"></div>');
+   $(".modal-container").append('<div class="modal"></div>');
    $('.modal').css('display', 'block');
    console.log(index)
    addEventListenerToModal(index);
