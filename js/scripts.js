@@ -71,7 +71,7 @@ let employees = [];
    var name = employee.name.first + " " + employee.name.last;
    var dateOfBirth = formatDateOfBirth(employee.dob.date);
    
-   var location = employee.location.city + ", " + employee.location.state + ", " + employee.location.postcode; 
+   var location = employee.location.street + employee.location.city + ", " + employee.location.state + " " + employee.location.postcode; 
    var modalContent = '<button type="button id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>';
   modalContent += "<img class='modal-img'  src='" + employee.picture.large + "'alt='profile picture'>";
   modalContent += '<h3 id="name" class="modal-name cap">' + name + '</h3>';
@@ -79,18 +79,12 @@ let employees = [];
   modalContent +='<p class="modal-text cap">' + employee.location.city + '</p>';
   modalContent += '<hr>';
   modalContent += '<p class="modal-text">' + employee.phone + '</p>';
-  modalContent +='<p class="modal-text cap">' + employee.location.street + '</p>';
+  
   modalContent += '<p class="modal-text cap">' + location + '</p>';
   modalContent += '<p class="modal-text"> Birthday: ' + dateOfBirth + '</p>';
 
    modalContent += '</div>';
-   //modalContent +=
-   // '<p class="modal-text cap">' +
-   // employee.location.city +
-   // ', ' +
-   // employee.location.state + " "+
-   // employee.location.postcode +
-   // '</p>';
+   
    $("body").append('<div class="modal-container"></div>');
    $(".modal-container").append('<div class="modal"></div>');
    $('.modal').append(modalContent);
@@ -106,19 +100,8 @@ let employees = [];
    var month = date.getMonth() + 1;
    var day = date.getDate();
    var year = date.getYear();
-   var dateOfBirth = month + '-' + day + "-" + year;
+   var dateOfBirth = month + '/' + day + "/" + year;
    return dateOfBirth;
- }
-
-// //puts adress into modal
- function formatAddress(employee) {
-   var city = capitalize(employee.location.city);
-   var state = capitalize(employee.location.state);
-   var address = employee.location.street + '<br>'
-   address += city + ', ' + state;
-   address += ' ' + employee.location.postcode + ', ';
-   address += employee.nat + '<br>';
-   return address;
  }
 
 // //Adding the 'x', next, and back button in modal
@@ -129,13 +112,13 @@ let employees = [];
      $('.modal-container').remove();
    })
 
-   $('.back').click(function() {
-     var last = idNumber - 1;
-     if (idNumber > 0) {
-       $('.modal-content').remove();
-       employeeModal(last);
-     }
-   })
+  // $('.back').click(function() {
+  //   var last = idNumber - 1;
+  //   if (idNumber > 0) {
+  //     $('.modal-content').remove();
+  //     employeeModal(last);
+  //   }
+  // })
 
    $('.next').click(function() {
      var next = idNumber + 1;
