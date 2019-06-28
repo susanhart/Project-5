@@ -44,7 +44,7 @@ let employees = [];
 
  //function loadAndShowData() { 
  $.ajax({
-     url: 'https://randomuser.me/api/?results=12',
+     url: 'https://randomuser.me/api/?results=12&nat=us,gb',
      dataType: 'json',
      success: function(data) {
       /*  console.log(data.results[0].name);
