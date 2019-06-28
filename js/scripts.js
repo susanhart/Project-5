@@ -126,7 +126,7 @@ let employees = [];
   // console.log("Hello")
    $('.modal-close-btn').click(function() {
      $('.modal').css('display', 'none');
-     $('.modal-content').remove();
+     $('.modal-container').remove();
    })
 
    $('.back').click(function() {
