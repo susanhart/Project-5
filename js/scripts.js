@@ -105,7 +105,7 @@ $form = $("<form></form>");
 // //Getting the modal container box to close
  function addEventListenerToModal() {
   // console.log("Hello")
-  //Creating an event listener to close every time the modal close button is clicked
+  //Creating an event listener to close the modal pop-up box every time the modal close button is clicked
    $('.modal-close-btn').click(function() {
      $('.modal').css('display', 'none');
      $('.modal-container').remove();
