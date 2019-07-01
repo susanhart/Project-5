@@ -1,6 +1,6 @@
 let employees = [];
 
-// //Gallery Mark-Up: Getting and displaying 12 Random Users
+// //Gallery Mark-Up: Creating the twelve individual employee boxes/business cards for Getting and displaying 12 Random Users
 
  $form = $("<form></form>");
  $form.append('<input type="search" id="search-input" class="search-input" placeholder="Search...">');
@@ -40,11 +40,11 @@ let employees = [];
      $cardInfoContainer.append($location)
      $card.click(function(){
       employeeModal(i, data.results[i])
-      }) // $card.click(employeeModal(i, data))
+      }) 
   }        
  }
 
- //function loadAndShowData() { 
+ //Getting the data collected of the 12 random employees/users from another website to load on the page 
  $.ajax({
      url: 
      'https://randomuser.me/api/?results=12&nat=us',
@@ -58,11 +58,7 @@ let employees = [];
       
      }
    });
- //}
-
-// for (i = 0; i < 12; i++) { 
- //    loadAndShowData();
- //}
+ 
 // //Creating the modal pop-up that brings out the modal and blocks the background
 
   function employeeModal(index, data) {
@@ -104,21 +100,13 @@ let employees = [];
    return dateOfBirth;
  }
 
-// //Adding the 'x', next, and back button in modal
+// //Getting the modal container box to close
  function addEventListenerToModal(idNumber) {
   // console.log("Hello")
    $('.modal-close-btn').click(function() {
      $('.modal').css('display', 'none');
      $('.modal-container').remove();
    })
-
-  // $('.back').click(function() {
-  //   var last = idNumber - 1;
-  //   if (idNumber > 0) {
-  //     $('.modal-content').remove();
-  //     employeeModal(last);
-  //   }
-  // })
 
    $('.next').click(function() {
      var next = idNumber + 1;
@@ -131,15 +119,4 @@ let employees = [];
 
 
 
-// // Create a modal window
-// // When any part of an employee item in the directory is clicked, a modal window should pop up with the following details displayed:
-// // Image
-// // Name
-// // Email
-// // City or location
-// // Cell Number
-// // Detailed Address, including street name and number, state or country, and post code.
-// // Birthday
-// // Make sure there’s a way to close the modal window
-// // Refer to the mockups and the comments in the index.html file for an example of what info should be displayed on the page and how it should be style
 
